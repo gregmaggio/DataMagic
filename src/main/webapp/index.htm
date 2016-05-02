@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Data Magic</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/json2.js"></script>
+<script type="text/javascript">
+	var DataMagic = {
+		initialize: function() {
+		}
+	};
+</script>
+</head>
+<body>
+	<div class="container marketing">
+		<!-- Three columns of text below the carousel -->
+			<div class="row">
+				<div class="col-lg-4">
+					<h2>Hurricane Tracker</h2>
+					<p>Historical hurricane storm tracks</p>
+					<p><a class="btn btn-default" href="http://datamagic.ca/HurricaneTracker" role="button" target="_blank">View details &raquo;</a></p>
+				</div><!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<h2>Hurricane API</h2>
+					<p>API used by the hurricane tracker</p>
+					<p><a class="btn btn-default" href="http://datamagic.ca/Hurricane/" role="button" target="_blank">View details &raquo;</a></p>
+				</div><!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<h2>ENSO API</h2>
+					<p>API used by the hurricane tracker to retrieve El Nino/La Nina data.</p>
+					<p><a class="btn btn-default" href="http://datamagic.ca/ENSO/" role="button" target="_blank">View details &raquo;</a></p>
+				</div><!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<h2>Weather Forecast Office API</h2>
+					<p>API for retrieving WFO by location.</p>
+					<p><a class="btn btn-default" href="http://datamagic.ca/WFO/" role="button" target="_blank">View details &raquo;</a></p>
+				</div><!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<h2>Source Code on github</h2>
+					<p><a class="btn btn-default" href="https://github.com/gregmaggio" role="button" target="_blank">View details &raquo;</a></p>
+				</div><!-- /.col-lg-4 -->
+			</div><!-- /.row -->
+	</div>
+	<script type="text/javascript">
+	(function () {
+		$(document).ready(DataMagic.initialize);
+	})();
+	</script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-43521161-1']);
+		_gaq.push(['_trackPageview']);
+		
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-43521161-1', 'datamagic.ca');
+		ga('send', 'pageview');
+	</script>
+	<div id="loading"></div>
+</body>
+</html>
