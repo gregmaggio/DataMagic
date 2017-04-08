@@ -1,0 +1,69 @@
+{
+	"swagger" : "2.0",
+	"info" : {
+		"description" : "DataMagic API",
+		"version" : "1.0",
+		"title" : "DataMagic Service",
+		"license" : {
+			"name" : "Apache License Version 2.0"
+		}
+	},
+	"host" : "localhost:8081",
+	"basePath" : "/",
+	"tags" : [{
+			"name" : "index-controller",
+			"description" : "Index Controller"
+		}
+	],
+	"paths" : {
+		"/api/error" : {
+			"post" : {
+				"tags" : ["index-controller"],
+				"summary" : "error",
+				"operationId" : "error",
+				"consumes" : ["multipart/form-data"],
+				"produces" : ["*/*"],
+				"parameters" : [{
+						"name" : "mailFrom",
+						"in" : "formData",
+						"description" : "mailFrom",
+						"required" : true,
+						"type" : "string"
+					},{
+						"name" : "mailSubject",
+						"in" : "formData",
+						"description" : "mailSubject",
+						"required" : true,
+						"type" : "string"
+					},{
+						"name" : "mailBody",
+						"in" : "formData",
+						"description" : "mailBody",
+						"required" : true,
+						"type" : "string"
+					},{
+						"name" : "attachment",
+						"in" : "formData",
+						"description" : "attachment",
+						"required" : false,
+						"type" : "file"
+					}
+				],
+				"responses" : {
+					"200" : {
+						"description" : "OK",
+					},
+					"401" : {
+						"description" : "Unauthorized"
+					},
+					"403" : {
+						"description" : "Forbidden"
+					},
+					"404" : {
+						"description" : "Not Found"
+					}
+				}
+			}
+		}
+	}
+}
