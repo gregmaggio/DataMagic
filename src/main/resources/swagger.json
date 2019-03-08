@@ -8,7 +8,7 @@
 			"name" : "Apache License Version 2.0"
 		}
 	},
-	"host" : "localhost:8081",
+	"host" : "{{host}}",
 	"basePath" : "/",
 	"tags" : [{
 			"name" : "index-controller",
@@ -41,17 +41,11 @@
 						"description" : "mailBody",
 						"required" : true,
 						"type" : "string"
-					},{
-						"name" : "attachment",
-						"in" : "formData",
-						"description" : "attachment",
-						"required" : false,
-						"type" : "file"
 					}
 				],
 				"responses" : {
 					"200" : {
-						"description" : "OK",
+						"description" : "OK"
 					},
 					"401" : {
 						"description" : "Unauthorized"
