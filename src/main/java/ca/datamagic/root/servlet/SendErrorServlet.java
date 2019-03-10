@@ -10,9 +10,12 @@ import java.util.Properties;
 
 import javax.mail.BodyPart;
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.Multipart;
+import javax.mail.SendFailedException;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
@@ -36,6 +39,31 @@ import org.apache.log4j.Logger;
 public class SendErrorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = LogManager.getLogger(SendErrorServlet.class);
+	
+	private static void sendMessage(String mailFrom, String mailTo, String mailSubject, String mailBody) throws AddressException, MessagingException {		
+		try {
+			Properties props = new Properties();
+	        props.put("mail.smtp.host", "localhost");
+	        Session session = Session.getInstance(props);
+	        Message message = new MimeMessage(session);
+	        message.setFrom(new InternetAddress(mailFrom));
+	        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailTo));
+	        message.setSubject(mailSubject);
+	        BodyPart messageBodyPart = new MimeBodyPart();
+	        messageBodyPart.setText(mailBody);
+	        Multipart multipart = new MimeMultipart();
+	        multipart.addBodyPart(messageBodyPart);
+	        message.setContent(multipart);
+	        Transport.send(message);
+		} catch (SendFailedException ex) {
+			logger.warn("Exception", ex);
+			if (ex.getMessage().toLowerCase().contains("invalid address")) {
+				sendMessage("no-reply@datamagic.ca", mailTo, mailSubject, mailBody);
+				return;
+			}
+			throw ex;
+		}
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -82,19 +110,7 @@ public class SendErrorServlet extends HttpServlet {
 			logger.debug("mailFrom: " + mailFrom);
 			logger.debug("mailSubject: " + mailSubject);
 			logger.debug("mailBody: " + mailBody);
-        	Properties props = new Properties();
-            props.put("mail.smtp.host", "localhost");
-            Session session = Session.getInstance(props);
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(mailFrom));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("gregorymaggio@gmail.com"));
-            message.setSubject(mailSubject);
-            BodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText(mailBody);
-            Multipart multipart = new MimeMultipart();
-            multipart.addBodyPart(messageBodyPart);
-            message.setContent(multipart);
-            Transport.send(message);
+			sendMessage(mailFrom, "gregorymaggio@gmail.com", mailSubject, mailBody);
 		} catch (Throwable t) {
 			logger.error("Exception", t);
 			throw new ServletException(t);
