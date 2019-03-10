@@ -5,7 +5,7 @@
          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
          metadata-complete="true">
 
-	<display-name>Station</display-name>
+	<display-name>DataMagic</display-name>
 	
 	<listener>
 		<listener-class>ca.datamagic.root.servlet.RootContextListener</listener-class>
