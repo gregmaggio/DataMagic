@@ -15,6 +15,18 @@
         <servlet-name>SendError</servlet-name>
         <servlet-class>ca.datamagic.root.servlet.SendErrorServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OAuthCallback</servlet-name>
+        <servlet-class>ca.datamagic.root.servlet.OAuthCallbackServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WhoAmI</servlet-name>
+        <servlet-class>ca.datamagic.root.servlet.WhoAmIServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>ca.datamagic.root.servlet.LogoutServlet</servlet-class>
+    </servlet>
 	<servlet>
         <servlet-name>SwaggerUI</servlet-name>
         <servlet-class>ca.datamagic.root.servlet.SwaggerUIServlet</servlet-class>
@@ -30,6 +42,18 @@
     <servlet-mapping>
         <servlet-name>SendError</servlet-name>
         <url-pattern>/api/error</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OAuthCallback</servlet-name>
+        <url-pattern>/oauth/callback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WhoAmI</servlet-name>
+        <url-pattern>/whoAmI</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 	<servlet-mapping>
         <servlet-name>SwaggerUI</servlet-name>

@@ -9,12 +9,25 @@
 <script type="text/javascript">
 	var DataMagic = {
 		initialize: function() {
+			$.ajax({
+				url: "/whoAmI",
+				success: function(result) {
+					var logout = document.getElementById("logout");
+					logout.style.visibility = "visible";
+					logout.style.display = "block";
+				},
+				error: function( xhr, status, errorThrown ) {
+				},
+				complete: function( xhr, status) {
+				}
+			});
 		}
 	};
 </script>
 </head>
 <body>
 	<div class="container marketing">
+		<div id="logout" style="visibility:hidden;display:none;"><a href="/logout">Logout</a></div>
 		<!-- Three columns of text below the carousel -->
 			<div class="row">
 				<div class="col-lg-4">

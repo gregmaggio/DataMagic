@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>OAuthCallback</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="loginFailed" style="visibility:hidden;display:none;"><strong><font color="red">Login Failed!font></strong></div>
+<script type="text/javascript">
+	var sessionID = "{{sessionID}}";
+	var redirectURL = "{{redirectURL}}";
+	$( document ).ready(function() {
+		if (sessionID) {
+			window.location = "{{redirectURL}}";
+		} else {
+			var loginFailed = document.getElementById("loginFailed");
+			loginFailed.style.visibility = "visible";
+			loginFailed.style.display = "block";
+		}
+	});
+</script>
+</body>
+</html>
