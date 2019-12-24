@@ -17,7 +17,7 @@ public class UTCUtils {
 	private static SimpleDateFormat timeFormat = null;
 
 	static {
-		dateFormat = new SimpleDateFormat("yyyy-MMM-dd");
+		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 		timeFormat = new SimpleDateFormat("HH:mm:ss");
 		timeFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
