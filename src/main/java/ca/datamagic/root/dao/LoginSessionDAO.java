@@ -12,8 +12,8 @@ import java.text.MessageFormat;
 import java.util.Calendar;
 import java.util.UUID;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import ca.datamagic.root.dto.LoginSessionDTO;
 import ca.datamagic.root.util.UTCUtils;

@@ -8,12 +8,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.text.MessageFormat;
-import java.util.Properties;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
 import ca.datamagic.root.util.IOUtils;
@@ -24,53 +23,41 @@ import ca.datamagic.root.util.IOUtils;
  */
 public class OAuthDAO extends BaseDAO {
 	private static Logger logger = LogManager.getLogger(OAuthDAO.class);
-	private Properties properties = null;
 	
-	public OAuthDAO() throws IOException {
-		InputStream inputStream = null;
-		try {
-			inputStream = new FileInputStream(MessageFormat.format("{0}/secure.properties", getDataPath()));
-			this.properties = new Properties();
-			this.properties.load(inputStream);
-		} finally {
-			IOUtils.closeQuietly(inputStream);
-		}
+	public String getClientID() throws IOException {
+		return getProperties().getProperty("clientID");
 	}
 	
-	public String getClientID() {
-		return this.properties.getProperty("clientID");
+	public String getClientSecret() throws IOException {
+		return getProperties().getProperty("clientSecret");
 	}
 	
-	public String getClientSecret() {
-		return this.properties.getProperty("clientSecret");
+	public String getRedirectUri() throws IOException {
+		return getProperties().getProperty("redirectUri");
 	}
 	
-	public String getRedirectUri() {
-		return this.properties.getProperty("redirectUri");
+	public String getCookieName() throws IOException {
+		return getProperties().getProperty("cookieName");
 	}
 	
-	public String getCookieName() {
-		return this.properties.getProperty("cookieName");
+	public String getDomain() throws IOException {
+		return getProperties().getProperty("domain");
 	}
 	
-	public String getDomain() {
-		return this.properties.getProperty("domain");
+	public boolean isSecure() throws IOException {
+		return Boolean.parseBoolean(getProperties().getProperty("secure"));
 	}
 	
-	public boolean isSecure() {
-		return Boolean.parseBoolean(this.properties.getProperty("secure"));
+	public boolean isHttpOnly() throws IOException {
+		return Boolean.parseBoolean(getProperties().getProperty("httpOnly"));
 	}
 	
-	public boolean isHttpOnly() {
-		return Boolean.parseBoolean(this.properties.getProperty("httpOnly"));
+	public int getMaxAge() throws IOException {
+		return Integer.parseInt(getProperties().getProperty("maxAge"));
 	}
 	
-	public int getMaxAge() {
-		return Integer.parseInt(this.properties.getProperty("maxAge"));
-	}
-	
-	public String getPath() {
-		return this.properties.getProperty("path");
+	public String getPath() throws IOException {
+		return getProperties().getProperty("path");
 	}
 	
 	public String getAccessToken(String clientID, String clientSecret, String redirectUri, String code) throws IOException {
