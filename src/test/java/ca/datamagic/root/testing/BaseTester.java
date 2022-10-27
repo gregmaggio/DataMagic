@@ -17,6 +17,7 @@ import ca.datamagic.root.dao.BaseDAO;
 public abstract class BaseTester {
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException {
-		BaseDAO.setDataPath((new File("src/test/resources")).getCanonicalPath());
+		String dataPath = (new File("src/test/resources")).getCanonicalPath();
+		BaseDAO.setDataPath(dataPath);
 	}
 }

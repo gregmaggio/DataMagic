@@ -41,6 +41,10 @@
         <servlet-class>ca.datamagic.root.servlet.ContactServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>SendMail</servlet-name>
+        <servlet-class>ca.datamagic.root.servlet.SendMailServlet</servlet-class>
+    </servlet>     
+    <servlet>
         <servlet-name>OAuthCallback</servlet-name>
         <servlet-class>ca.datamagic.root.servlet.OAuthCallbackServlet</servlet-class>
     </servlet>
@@ -51,7 +55,7 @@
     <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>ca.datamagic.root.servlet.LogoutServlet</servlet-class>
-    </servlet>
+    </servlet>   
 	<servlet>
         <servlet-name>SwaggerUI</servlet-name>
         <servlet-class>ca.datamagic.root.servlet.SwaggerUIServlet</servlet-class>
@@ -78,6 +82,10 @@
         <servlet-name>Contact</servlet-name>
         <url-pattern>/api/contact</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendMail</servlet-name>
+        <url-pattern>/api/mail</url-pattern>
+    </servlet-mapping>    
     <servlet-mapping>
         <servlet-name>OAuthCallback</servlet-name>
         <url-pattern>/oauth/callback</url-pattern>

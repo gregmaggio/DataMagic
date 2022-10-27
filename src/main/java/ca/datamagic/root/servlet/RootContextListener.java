@@ -3,15 +3,11 @@
  */
 package ca.datamagic.root.servlet;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.MessageFormat;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
